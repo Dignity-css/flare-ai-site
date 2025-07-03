@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main-bg: #fff5ec;          /* Soft peach/orange background */
+  --main-orange: #f97316;      /* Main accent */
+  --main-orange-dark: #ea580c; /* Button hover */
+  --text-dark: #1e1e1e;
+}
+
+body {
+  background-color: var(--main-bg);
+  color: var(--text-dark);
+  font-family: var(--font-league-spartan), sans-serif;
+}
