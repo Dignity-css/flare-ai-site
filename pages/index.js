@@ -1,66 +1,51 @@
-import Link from "next/link";
+import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full bg-[var(--main-bg)] flex flex-col items-center justify-center px-4 py-10 sm:px-6">
-      <div className="w-full max-w-sm bg-white rounded-2xl shadow-md p-6 text-center">
-        <h1 className="text-2xl font-bold mb-4">Hello, Mamoon</h1>
+    <div className="container">
+      <Head>
+        <title>Flare Tracker</title>
+      </Head>
 
-        {/* Flare Risk Card */}
-        <div className="bg-blue-50 rounded-xl p-4 mb-6">
-          <div className="flex flex-col items-center">
-            <img src="/weather.png" alt="Weather" className="w-14 h-14 mb-2" />
-            <p className="text-sm font-medium text-gray-600">Flare Risk Today</p>
-            <p className="text-4xl font-bold text-gray-800">60%</p>
-            <p className="text-sm text-red-500 font-semibold">Moderate</p>
-          </div>
+      <h1>Hello, Mamoon</h1>
+
+      <div className="card">
+        <div className="icon">
+          <img src="/weather-icon.png" alt="Weather Icon" />
         </div>
-
-        {/* Today's Data Icons */}
-        <h2 className="text-md font-bold mb-3 text-left">Today’s Data:</h2>
-        <div className="flex justify-between mb-6">
-          {/* Sleep */}
-          <Link
-            href="/sleep"
-            className="flex flex-col items-center text-sm text-gray-800 hover:scale-105 transition"
-          >
-            <div className="bg-yellow-100 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow">
-              😴
-            </div>
-            <span className="mt-1 font-semibold">Sleep</span>
-          </Link>
-
-          {/* UV Index */}
-          <Link
-            href="/uv"
-            className="flex flex-col items-center text-sm text-gray-800 hover:scale-105 transition"
-          >
-            <div className="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow">
-              🌞
-            </div>
-            <span className="mt-1 font-semibold">UV Index</span>
-          </Link>
-
-          {/* Pollen Index */}
-          <Link
-            href="/pollen"
-            className="flex flex-col items-center text-sm text-gray-800 hover:scale-105 transition"
-          >
-            <div className="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow">
-              🌸
-            </div>
-            <span className="mt-1 font-semibold">Pollen</span>
-          </Link>
-        </div>
-
-        {/* CTA Button */}
-        <Link
-          href="/log"
-          className="block bg-[var(--main-orange)] hover:bg-[var(--main-orange-dark)] text-white text-md font-semibold py-3 px-6 rounded-full shadow transition-all"
-        >
-          Log Today’s Data
-        </Link>
+        <h2 style={{ fontSize: '1.2rem', fontWeight: 600 }}>Flare Risk Today</h2>
+        <h1 style={{ fontSize: '2rem' }}>60%</h1>
+        <p style={{ color: '#d9534f', fontWeight: '600' }}>Moderate</p>
       </div>
-    </main>
+
+      <h2 style={{ fontSize: '1.2rem', marginTop: '1.5rem' }}>Today’s Data:</h2>
+
+      <div className="data-icons">
+        <div className="data-item">
+          <div className="icon"><img src="/sleep-icon.png" alt="Sleep" /></div>
+          Sleep
+        </div>
+        <div className="data-item">
+          <div className="icon"><img src="/uv-icon.png" alt="UV" /></div>
+          UV Index
+        </div>
+        <div className="data-item">
+          <div className="icon"><img src="/pollen-icon.png" alt="Pollen" /></div>
+          Pollen Index
+        </div>
+      </div>
+
+      <Link href="/log" passHref>
+        <div className="button">Log Today’s Data</div>
+      </Link>
+
+      <div className="bottom-nav">
+        <span>🏠</span>
+        <span>📝</span>
+        <span>📊</span>
+        <span>⚙️</span>
+      </div>
+    </div>
   );
 }
