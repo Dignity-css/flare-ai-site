@@ -20,7 +20,7 @@ export default function Welcome() {
         />
         <h1 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.5rem' }}>Let’s get to know your skin</h1>
         <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '1.5rem' }}>
-          We’ll ask you a few questions to personalize your experience
+          We&rsquo;ll ask you a few questions to personalize your experience
         </p>
 
         <button

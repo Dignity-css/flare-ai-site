@@ -20,7 +20,8 @@ export default function UVPage() {
   return (
     <div className="container">
       <Head><title>UV Index | Flare AI</title></Head>
-      <h1>Today's UV Index:</h1>
+      <h1>Today&#39;s UV Index:</h1>
+
       <h2 style={{ margin: '1rem 0' }}>{uv !== null ? uv : 'Loading...'}</h2>
       <button onClick={() => router.push('/home')} className="button">Back to Home</button>
     </div>

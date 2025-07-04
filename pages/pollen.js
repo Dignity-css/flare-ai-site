@@ -17,7 +17,8 @@ export default function PollenPage() {
   return (
     <div className="container">
       <Head><title>Pollen | Flare AI</title></Head>
-      <h1>Today's Pollen Level:</h1>
+     <h1>Today&#39;s Pollen Level:</h1>
+
       <h2 style={{ margin: '1rem 0' }}>{pollen || 'Loading...'}</h2>
       <button onClick={() => router.push('/home')} className="button">Back to Home</button>
     </div>

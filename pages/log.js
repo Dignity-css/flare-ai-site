@@ -10,7 +10,7 @@ export default function Log() {
       </Head>
 
       <div className="container">
-        <h1>Log Today’s Data</h1>
+        <h1>Log Today&rsquo;s Data</h1>
 
         <div className="card">
           <p>Track your health indicators below:</p>

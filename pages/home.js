@@ -41,7 +41,7 @@ export default function Home() {
         <p style={{ color: '#d9534f', fontWeight: '600' }}>Moderate</p>
       </div>
 
-      <h2 style={{ fontSize: '1.2rem', marginTop: '1.5rem' }}>Today’s Data:</h2>
+      <h2 style={{ fontSize: '1.2rem', marginTop: '1.5rem' }}>Today&rsquo;s Data:</h2>
 
       <div className="data-icons">
         <div className="data-item" onClick={() => router.push('/sleep')}>
@@ -70,7 +70,7 @@ export default function Home() {
         className="button"
         onClick={() => router.push('/log-daily')}
       >
-        Log Today's Data
+      Log Today&rsquo;s Data
       </button>
 
       <button

@@ -58,7 +58,7 @@ export default function Intro() {
             textAlign: 'center'
           }}
         >
-          Let’s personalize your experience
+          Let&rsquo;s personalize your experience
         </h1>
 
         <label style={{ display: 'block', marginBottom: '1rem' }}>

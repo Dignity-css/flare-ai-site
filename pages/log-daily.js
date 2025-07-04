@@ -58,7 +58,7 @@ export default function LogDaily() {
             textAlign: 'center',
           }}
         >
-          Log Today’s Skin Update
+          Log Today&rsquo;s Skin Update
         </h1>
 
         <label style={{ display: 'block', marginBottom: '1rem' }}>
