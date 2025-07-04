@@ -18,12 +18,25 @@ export default function UVPage() {
   }, []);
 
   return (
-    <div className="container">
-      <Head><title>UV Index | Flare AI</title></Head>
-      <h1>Today&#39;s UV Index:</h1>
+    <div className="container" style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Head>
+        <title>UV Index | Flare AI</title>
+      </Head>
 
-      <h2 style={{ margin: '1rem 0' }}>{uv !== null ? uv : 'Loading...'}</h2>
-      <button onClick={() => router.push('/home')} className="button">Back to Home</button>
+      <div className="card" style={{ maxWidth: '400px', textAlign: 'center', padding: '2rem' }}>
+        <h1 style={{ fontSize: '1.6rem', marginBottom: '1rem' }}>Today&apos;s UV Index</h1>
+        <h2 style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
+          {uv !== null ? uv : 'Loading...'}
+        </h2>
+
+        <button
+          onClick={() => router.push('/home')}
+          className="button"
+          style={{ backgroundColor: '#fcbf49', fontWeight: '600' }}
+        >
+          Back to Home
+        </button>
+      </div>
     </div>
   );
 }
