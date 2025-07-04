@@ -8,19 +8,30 @@ export default function PollenPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // Dummy data for now
+    // Dummy pollen level for now
     const pollenLevel = 'High';
     setPollen(pollenLevel);
     localStorage.setItem('pollen', pollenLevel);
   }, []);
 
   return (
-    <div className="container">
-      <Head><title>Pollen | Flare AI</title></Head>
-     <h1>Today&#39;s Pollen Level:</h1>
+    <div className="container" style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Head>
+        <title>Pollen | Flare AI</title>
+      </Head>
 
-      <h2 style={{ margin: '1rem 0' }}>{pollen || 'Loading...'}</h2>
-      <button onClick={() => router.push('/home')} className="button">Back to Home</button>
+      <div className="card" style={{ maxWidth: '400px', textAlign: 'center', padding: '2rem' }}>
+        <h1 style={{ fontSize: '1.6rem', marginBottom: '1rem' }}>Today&apos;s Pollen Level</h1>
+        <h2 style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>{pollen || 'Loading...'}</h2>
+
+        <button
+          onClick={() => router.push('/home')}
+          className="button"
+          style={{ backgroundColor: '#fcbf49', fontWeight: '600' }}
+        >
+          Back to Home
+        </button>
+      </div>
     </div>
   );
 }
