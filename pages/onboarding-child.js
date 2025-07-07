@@ -122,7 +122,15 @@ export default function OnboardingChild() {
               marginTop: '0.3rem',
             }}
           >
-            {['Eczema', 'Psoriasis', 'Acne', 'Urticaria', 'Seborrheic Dermatitis', "I'm not sure", 'Other'].map((item, idx) => (
+            {[
+              'Eczema',
+              'Psoriasis',
+              'Acne',
+              'Urticaria',
+              'Seborrheic Dermatitis',
+              'I&rsquo;m not sure',
+              'Other',
+            ].map((item, idx) => (
               <button
                 key={idx}
                 onClick={() => toggleCondition(item)}
@@ -140,7 +148,6 @@ export default function OnboardingChild() {
             ))}
           </div>
 
-          {/* Show "Other" input if selected */}
           {condition.includes('Other') && (
             <input
               type="text"
