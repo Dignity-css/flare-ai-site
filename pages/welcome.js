@@ -25,7 +25,7 @@ export default function Welcome() {
 
         <button
           className="button"
-          onClick={() => router.push('/intro')}
+          onClick={() => router.push('/onboarding')}
         >
           Next
         </button>

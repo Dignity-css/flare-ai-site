@@ -6,20 +6,22 @@ export default function History() {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    const storedLogs = JSON.parse(localStorage.getItem('logHistory')) || [];
-    setLogs(storedLogs.reverse()); // show latest first
+    const stored = localStorage.getItem('logs');
+    if (stored) {
+      setLogs(JSON.parse(stored).reverse()); // newest first
+    }
   }, []);
 
   return (
-    <div className="container" style={{ paddingBottom: '4rem' }}>
+    <div className="container" style={{ paddingBottom: '4rem', padding: '2rem', backgroundColor: '#fce9e9', minHeight: '100vh' }}>
       <Head>
-        <title>Log History | Flare AI</title>
+        <title>Log History | Dermind</title>
       </Head>
 
-      <h1 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>📘 Log History</h1>
+      <h1 style={{ fontSize: '1.8rem', marginBottom: '1.5rem', textAlign: 'center' }}>📘 Log History</h1>
 
       {logs.length === 0 ? (
-        <p>No entries yet. Go log your day!</p>
+        <p style={{ textAlign: 'center' }}>No entries yet. Go log your day!</p>
       ) : (
         logs.map((entry, idx) => (
           <div
@@ -34,10 +36,11 @@ export default function History() {
             }}
           >
             <p><strong>Date:</strong> {entry.date}</p>
-            <p><strong>Mood:</strong> {entry.mood || '—'}</p>
-            <p><strong>Skin Feel:</strong> {entry.skinFeel || '—'}</p>
-            <p><strong>Symptoms:</strong> {entry.symptoms || '—'}</p>
-            <p><strong>Notes:</strong> {entry.notes || 'None'}</p>
+            <p><strong>Itch Level:</strong> {entry.itchLevel}</p>
+            <p><strong>Flare Zone:</strong> {entry.flareZone}</p>
+            <p><strong>Stress:</strong> {entry.stress}</p>
+            <p><strong>Confidence:</strong> {entry.confidence}</p>
+            <p><strong>Triggers:</strong> {entry.foodTriggers?.join(', ') || '—'}</p>
           </div>
         ))
       )}
@@ -45,10 +48,18 @@ export default function History() {
       <button
         className="button"
         onClick={() => window.location.href = '/home'}
-        style={{ marginTop: '1rem', backgroundColor: '#ddd', color: 'black' }}
+        style={{
+          marginTop: '2rem',
+          width: '100%',
+          backgroundColor: '#ddd',
+          color: 'black',
+          borderRadius: '1rem',
+          padding: '0.8rem'
+        }}
       >
         ← Back to Home
       </button>
     </div>
   );
 }
+
