@@ -51,30 +51,12 @@ export default function OnboardingChild() {
   };
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        backgroundColor: '#fce9e9',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '2rem',
-      }}
-    >
+    <div className="container" style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#fce9e9' }}>
       <Head>
         <title>Child Onboarding | Dermind</title>
       </Head>
 
-      <div
-        style={{
-          background: '#fff',
-          borderRadius: '1.5rem',
-          padding: '2rem',
-          maxWidth: '500px',
-          width: '100%',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-        }}
-      >
+      <div className="card" style={{ width: '100%', maxWidth: '480px', padding: '2rem', background: '#fff', borderRadius: '1.5rem', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
         <h1 style={{ fontSize: '1.4rem', marginBottom: '1.5rem', textAlign: 'center' }}>
           👶 Parent Profile Setup
         </h1>
@@ -84,13 +66,7 @@ export default function OnboardingChild() {
           <select
             value={ageGroup}
             onChange={(e) => setAgeGroup(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '0.5rem',
-              marginTop: '0.3rem',
-              borderRadius: '0.5rem',
-              border: '1px solid #ccc',
-            }}
+            style={{ width: '100%', padding: '0.5rem', marginTop: '0.3rem', borderRadius: '0.5rem', border: '1px solid #ccc' }}
           >
             <option value="0-3">0–3 yrs</option>
             <option value="4-7">4–7 yrs</option>
@@ -121,15 +97,7 @@ export default function OnboardingChild() {
         <div style={{ marginBottom: '1.5rem' }}>
           Conditions being managed:
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.3rem' }}>
-            {[
-              'Eczema',
-              'Psoriasis',
-              'Acne',
-              'Urticaria',
-              'Seborrheic Dermatitis',
-              "I'm not sure",
-              'Other',
-            ].map((item, idx) => (
+            {['Eczema', 'Psoriasis', 'Acne', 'Urticaria', 'Seborrheic Dermatitis', 'Not sure', 'Other'].map((item, idx) => (
               <button
                 key={idx}
                 onClick={() => toggleCondition(item)}
@@ -142,7 +110,7 @@ export default function OnboardingChild() {
                   cursor: 'pointer',
                 }}
               >
-                {item === "I'm not sure" ? 'I’m not sure' : item}
+                {item}
               </button>
             ))}
           </div>
@@ -153,13 +121,7 @@ export default function OnboardingChild() {
               placeholder="Type the condition"
               value={otherCondition}
               onChange={(e) => setOtherCondition(e.target.value)}
-              style={{
-                marginTop: '0.75rem',
-                width: '100%',
-                padding: '0.5rem',
-                borderRadius: '0.5rem',
-                border: '1px solid #ccc',
-              }}
+              style={{ marginTop: '0.75rem', width: '100%', padding: '0.5rem', borderRadius: '0.5rem', border: '1px solid #ccc' }}
             />
           )}
         </div>
@@ -172,12 +134,7 @@ export default function OnboardingChild() {
               placeholder="e.g. Islamabad"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              style={{
-                flex: 1,
-                padding: '0.5rem',
-                borderRadius: '0.5rem',
-                border: '1px solid #ccc',
-              }}
+              style={{ flex: 1, padding: '0.5rem', borderRadius: '0.5rem', border: '1px solid #ccc' }}
             />
             <button
               onClick={fetchLocation}
@@ -199,16 +156,8 @@ export default function OnboardingChild() {
 
         <button
           onClick={handleNext}
-          style={{
-            width: '100%',
-            backgroundColor: '#f78d8d',
-            color: 'white',
-            padding: '0.75rem',
-            borderRadius: '1rem',
-            fontWeight: '600',
-            border: 'none',
-            cursor: 'pointer',
-          }}
+          className="button"
+          style={{ width: '100%', backgroundColor: '#f78d8d', color: 'white', padding: '0.75rem', borderRadius: '1rem', fontWeight: '600', border: 'none', cursor: 'pointer' }}
         >
           Continue
         </button>
