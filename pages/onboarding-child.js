@@ -20,7 +20,7 @@ export default function OnboardingChild() {
   const handleNext = () => {
     let allConditions = [...condition];
     if (condition.includes('Other') && otherCondition.trim()) {
-      allConditions = allConditions.filter(c => c !== 'Other');
+      allConditions = allConditions.filter((c) => c !== 'Other');
       allConditions.push(`Other: ${otherCondition.trim()}`);
     }
 
@@ -39,7 +39,11 @@ export default function OnboardingChild() {
         fetch(`https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}`)
           .then((res) => res.json())
           .then((data) => {
-            const city = data?.address?.city || data?.address?.town || data?.address?.village || 'Unknown';
+            const city =
+              data?.address?.city ||
+              data?.address?.town ||
+              data?.address?.village ||
+              'Unknown';
             setLocation(city);
           });
       });
@@ -57,7 +61,9 @@ export default function OnboardingChild() {
         padding: '2rem',
       }}
     >
-      <Head><title>Child Onboarding | Dermind</title></Head>
+      <Head>
+        <title>Child Onboarding | Dermind</title>
+      </Head>
 
       <div
         style={{
@@ -74,7 +80,7 @@ export default function OnboardingChild() {
         </h1>
 
         <label style={{ display: 'block', marginBottom: '1rem' }}>
-          Child's age group:
+          Child&apos;s age group:
           <select
             value={ageGroup}
             onChange={(e) => setAgeGroup(e.target.value)}
@@ -114,21 +120,14 @@ export default function OnboardingChild() {
 
         <div style={{ marginBottom: '1.5rem' }}>
           Conditions being managed:
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '0.5rem',
-              marginTop: '0.3rem',
-            }}
-          >
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.3rem' }}>
             {[
               'Eczema',
               'Psoriasis',
               'Acne',
               'Urticaria',
               'Seborrheic Dermatitis',
-              'I&rsquo;m not sure',
+              "I'm not sure",
               'Other',
             ].map((item, idx) => (
               <button
@@ -143,7 +142,7 @@ export default function OnboardingChild() {
                   cursor: 'pointer',
                 }}
               >
-                {item}
+                {item === "I'm not sure" ? 'I’m not sure' : item}
               </button>
             ))}
           </div>
