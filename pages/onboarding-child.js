@@ -97,7 +97,7 @@ export default function OnboardingChild() {
         <div style={{ marginBottom: '1.5rem' }}>
           Conditions being managed:
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.3rem' }}>
-            {['Eczema', 'Psoriasis', 'Acne', 'Urticaria', 'Seborrheic Dermatitis', 'I&#39;m not sure', 'Other'].map((item, idx) => (
+            {['Eczema', 'Psoriasis', 'Acne', 'Urticaria', 'Seborrheic Dermatitis', 'not sure', 'Other'].map((item, idx) => (
               <button
                 key={idx}
                 onClick={() => toggleCondition(item)}
