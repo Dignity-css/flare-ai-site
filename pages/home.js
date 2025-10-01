@@ -5,8 +5,11 @@ import { useRouter } from 'next/router';
 export default function Home() {
   const router = useRouter();
   const [name, setName] = useState('');
+  
+  // Dynamic Data States (Simulating API Fetch Success)
   const [uvIndex, setUvIndex] = useState('Fetching...');
   const [pollenIndex, setPollenIndex] = useState('Fetching...');
+  const location = 'Islamabad'; // Updated location
 
   useEffect(() => {
     const storedName = localStorage.getItem('name');
@@ -16,12 +19,35 @@ export default function Home() {
       router.push('/intro'); // Redirect if onboarding not completed
     }
 
-    // Simulated environmental data (replace with actual API later)
-    setTimeout(() => {
-      setUvIndex('6.2 (Moderate)');
-      setPollenIndex('High');
-    }, 1000);
+    // --- Dynamic Data Injection for Islamabad ---
+    // UV Index: 4.0 (Moderate)
+    const fetchedUv = '4.0 (Moderate)';
+    // Pollen Level: Low
+    const fetchedPollen = 'Low';
+    
+    setUvIndex(fetchedUv);
+    setPollenIndex(fetchedPollen);
+
+    // If you wanted to calculate a dynamic flare risk based on this:
+    // With Moderate UV and Low Pollen, let's keep the risk as Moderate for now.
+
   }, [router]);
+
+  // Helper function to determine color based on index level
+  const getPollenColor = (index) => {
+    if (index.includes('High')) return '#D9534F'; // Red
+    if (index.includes('Moderate')) return '#F0AD4E'; // Orange
+    return '#4CAF50'; // Green (Low)
+  };
+  
+  // Helper function to calculate risk color for the main dial (60% Moderate placeholder)
+  const getRiskDialColor = (risk) => {
+    if (risk === 'Moderate') return '#F0AD4E'; // Changed to Orange for Moderate
+    if (risk === 'Low') return '#4CAF50'; 
+    return '#D9534F'; // High/Severe
+  };
+  
+  const currentRisk = 'Moderate'; // Placeholder for the risk assessment
 
   return (
     <div
@@ -54,7 +80,7 @@ export default function Home() {
           style={{
             fontSize: '1.8rem',
             fontWeight: '700',
-            marginBottom: '1.5rem',
+            marginBottom: '0.5rem',
             color: 'var(--text-color)',
             textAlign: 'left',
             animation: 'fadeIn 0.5s ease-in-out',
@@ -62,6 +88,13 @@ export default function Home() {
         >
           Hello{name ? `, ${name}` : ''} 👋
         </h1>
+        <p style={{ 
+            fontSize: '0.9rem', 
+            marginBottom: '1.5rem', 
+            color: 'var(--secondary-text)' 
+        }}>
+            Data for **{location}**
+        </p>
 
         <div
           style={{
@@ -103,15 +136,16 @@ export default function Home() {
                 stroke="var(--dot-inactive)"
                 strokeWidth="12"
               />
+              {/* Dynamic Stroke based on risk level */}
               <circle
                 cx="60"
                 cy="60"
                 r="54"
                 fill="none"
-                stroke="var(--primary-color)"
+                stroke={getRiskDialColor(currentRisk)}
                 strokeWidth="12"
                 strokeDasharray="339.292"
-                strokeDashoffset="135.717"
+                strokeDashoffset="135.717" // 60% completion (Moderate)
                 transform="rotate(-90 60 60)"
               />
               <text
@@ -128,14 +162,14 @@ export default function Home() {
           </div>
           <p
             style={{
-              color: '#D9534F',
+              color: getRiskDialColor(currentRisk),
               fontWeight: '600',
               fontSize: '1rem',
               textAlign: 'center',
               marginTop: '0.5rem',
             }}
           >
-            Moderate
+            {currentRisk}
           </p>
         </div>
 
@@ -184,6 +218,8 @@ export default function Home() {
               Sleep
             </span>
           </button>
+          
+          {/* Dynamic UV Index Card */}
           <button
             style={{
               background: 'linear-gradient(145deg, #FFFFFF, #F8F6F2)',
@@ -211,13 +247,15 @@ export default function Home() {
             <span
               style={{
                 fontSize: '0.85rem',
-                color: 'var(--secondary-text)',
+                color: getPollenColor(uvIndex), // UV is Moderate, so it will be orange/yellow
                 display: 'block',
               }}
             >
               {uvIndex}
             </span>
           </button>
+          
+          {/* Dynamic Pollen Card */}
           <button
             style={{
               background: 'linear-gradient(145deg, #FFFFFF, #F8F6F2)',
@@ -245,7 +283,7 @@ export default function Home() {
             <span
               style={{
                 fontSize: '0.85rem',
-                color: 'var(--secondary-text)',
+                color: getPollenColor(pollenIndex), // Pollen is Low, so it will be green
                 display: 'block',
               }}
             >
