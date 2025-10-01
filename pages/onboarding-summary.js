@@ -149,7 +149,7 @@ export default function OnboardingSummary() {
         <div className="card-inner">
           <h1 className="title">All Set! 🎉 Your Skin Profile is Ready.</h1>
           <p className="subtitle">
-            A quick look at the information we'll use to personalize your tracking.
+            A quick look at the information we will use to personalize your tracking.
           </p>
 
           <div className="summary-content">
